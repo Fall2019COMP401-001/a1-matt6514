@@ -21,7 +21,15 @@ public class A1Novice {
 				String name = scan.next();
 				total_price += quan * scan.nextDouble();
 			}
-			String total = Integer.toString((int)(total_price*100));
+			String total = Integer.toString((int)Math.round(total_price*100));
+			if (total.length() < 3) {
+				if (total.length() < 2) {
+					total = "00" + total;
+				} 
+				else {
+					total = "0" + total;
+				}
+			}
 			System.out.println(total.substring(0,total.length()-2) + "." + total.substring(total.length()-2,total.length()));
 		}
 		
