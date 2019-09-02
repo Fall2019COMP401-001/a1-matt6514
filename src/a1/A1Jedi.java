@@ -31,7 +31,6 @@ public static void main(String[] args) {
 			for(int j = 0; j < per_cus;j++) {
 				int quan = scan.nextInt();
 				String name = scan.next();
-				int m = 0; //to keep track of index of fruit
 				for(int k = 0;k < item_name.length;k++) {
 					if (item_name[k].equals(name)) {
 						num_per[k] += 1;
