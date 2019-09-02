@@ -1,5 +1,6 @@
 package a1;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class A1Jedi {
@@ -21,7 +22,10 @@ public static void main(String[] args) {
 		int num_cus = scan.nextInt();
 		String[] f = new String[num_cus];
 		String[] l = new String[num_cus];
-		int[] num_per = new int[num_item];
+		ArrayList<ArrayList<String>> num_per = new ArrayList<ArrayList<String>>();
+		for (int i = 0; i < num_item;i++) {
+			num_per.add(new ArrayList<String>());
+		}
 		int[] buy_item = new int[num_item];
 		
 		for(int i = 0; i < num_cus;i++) {
@@ -33,7 +37,9 @@ public static void main(String[] args) {
 				String name = scan.next();
 				for(int k = 0;k < item_name.length;k++) {
 					if (item_name[k].equals(name)) {
-						num_per[k] += 1;
+						if (!(num_per.get(k).contains(f[i] + l[i]))) {
+							num_per.get(k).add(f[i] + l[i]);
+						}
 						buy_item[k] += quan;
 						break;
 					}
@@ -42,11 +48,11 @@ public static void main(String[] args) {
 		}
 		
 		for (int i = 0; i < num_item;i++) {
-			if (num_per[i] == 0) {
+			if (num_per.get(i).size() == 0) {
 				System.out.println("No customers bought " + item_name[i]);
 			}
 			else {
-				System.out.println(num_per[i] + " customers bought " + buy_item[i] + " " + item_name[i]);
+				System.out.println(num_per.get(i).size() + " customers bought " + buy_item[i] + " " + item_name[i]);
 			}
 		}
 	}
